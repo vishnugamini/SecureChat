@@ -1,0 +1,147 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+input {
+    font-size: 14px;
+}
+
+body {
+    line-height: 1.6;
+    color: #E0E0E0;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    background-color: #1A1A1D;
+}
+
+h1, h2 {
+    color: #FFF;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #BBBBBB;
+}
+
+input {
+    border: 1px solid #444;
+    padding: 12px;
+    outline: none;
+    background-color: #2C2C34;
+    color: #FFF;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    padding: 12px;
+    background: linear-gradient(90deg, #FF416C, #FF4B2B);
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: background .3s ease, transform .3s ease;
+    border-radius: 8px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #FF4B2B, #FF416C);
+    transform: scale(1.05);
+}
+
+button:disabled {
+    cursor: default;
+    background: #FF4B2B94;
+}
+
+
+.header {
+    background: #2C2C34;
+    text-align: center;
+    padding: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    height: calc(100vh - 80px); 
+    padding: 16px;
+}
+
+.centered-form {
+    background: #2C2C34;
+    width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.centered-form__box {
+    box-shadow: 0px 0px 17px 1px #1D1F26;
+    background: #3B3B45;
+    padding: 24px;
+    width: 400px;
+    height: 350px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.centered-form button {
+    margin-top: 20px;
+    width: 100%;
+    background: linear-gradient(90deg, #FF416C, #FF4B2B);
+}
+
+.centered-form button:hover {
+    background: linear-gradient(90deg, #FF4B2B, #FF416C);
+}
+
+.centered-form input {
+    margin-bottom: 16px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.security-widgets-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 24px; 
+    margin-left: 24px;
+    width: 35%; 
+}
+
+.security-widget {
+    background: #3B3B45;
+    padding: 24px;
+    width: 100%; 
+    height: auto;
+    border-radius: 8px;
+    color: #E0E0E0;
+    box-shadow: 0px 0px 17px 1px #1D1F26;
+}
+
+.security-widget h2 {
+    margin-bottom: 16px;
+}
+
+.security-widget p,
+.security-widget ol,
+.security-widget li {
+    padding-left: 16px; 
+    font-size: 14px;
+    color: #BBBBBB;
+}
+
+.security-widget ol {
+    margin-bottom: 16px;
+    padding-left: 16px; 
+}
