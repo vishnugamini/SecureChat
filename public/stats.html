@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat Widgets</title>
+    <link rel="stylesheet" href="css/stats.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Secure Chat</h1>
+        <button class="back-button" onclick="goBack()">Back</button>
+    </header>
+    <div class="container">
+        <div class="security-widgets-container">
+            <div class="security-widget">
+                <h2>Total Rooms Created</h2>
+                <p id="roomsCount">0</p>
+            </div>
+            <div class="security-widget">
+                <h2>Total Texts Sent</h2>
+                <p id="textsCount">0</p>
+            </div>
+            <div class="security-widget">
+                <h2>Total Users Ever</h2>
+                <p id="usersCount">0</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/stats.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

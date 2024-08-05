@@ -1,15 +1,15 @@
+const {getOrCreateStats,incrementRoomsCount,incrementTextsCount,incrementUsersCount} = require('./schema')
 const users = []
 
 const addUser = ({id,username,room}) => {
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
-
+    checkRoomExists(room)
     if (!username || !room){
         return {
             error: 'Username and room are required'
         }
     }
-
     const existingUser = users.find((user) => {
         return user.room === room && user.username === username
     })
@@ -19,11 +19,31 @@ const addUser = ({id,username,room}) => {
             error:"Username is in use"
         }
     }
+    incrementUsersCount()
+
 
     const user = {id,username,room}
     users.push(user)
     return {user}
 }
+let bool = true;
+
+const checkRoomExists = (room) => {
+    bool = true;
+    
+    for (let i = 0; i < users.length; i++) {
+        const { id, username, room: userRoom } = users[i]; 
+        if (userRoom === room) {
+            bool = false;
+            break; 
+        }
+    }
+    
+    if (bool) {
+        incrementRoomsCount();
+    }
+};
+
 
 
 const removeUser = (id) => {

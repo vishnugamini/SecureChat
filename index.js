@@ -2,8 +2,23 @@ const path = require('path')
 const http = require('http')
 const express = require("express")
 const socketio = require("socket.io")
+const mongoose = require('mongoose');
+require('dotenv').config();
 const {generateMessage,generateLocationMessage} = require('./src/utils/messages')
 const {addUser,removeUser,getUser,getUsersInRoom} = require('./src/utils/users')
+
+const {getOrCreateStats,incrementRoomsCount,incrementTextsCount,incrementUsersCount} = require('./src/utils/schema')
+
+const statsSchema = new mongoose.Schema({
+    rooms: { type: Number, default: 0 },
+    users: { type: Number, default: 0 },
+    texts: { type: Number, default: 0 },
+});
+const Stats = mongoose.models.Stats || mongoose.model('Stats', statsSchema);
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Could not connect to MongoDB:', err));
 
 const app = express()
 const server = http.createServer(app)
@@ -14,6 +29,20 @@ const publicDirectoryPath = path.join(__dirname,'/public')
 
 app.use(express.static(publicDirectoryPath))
 
+app.get('/stats', async (req, res) => {
+    try {
+      const stats = await Stats.findOne();
+      res.json(stats);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+});
+
+app.get('/statistics', (req, res) => {
+    res.sendFile(path.join(publicDirectoryPath, 'stats.html'));
+});
+
+
 io.on('connection', (socket) => {
     console.log("New WebSocket connection")
 
@@ -23,6 +52,8 @@ io.on('connection', (socket) => {
         if (error){
            return callback(error)
         }
+
+        
         socket.join(user.room)
         socket.emit('message', generateMessage('Welcome!'))
         socket.broadcast.to(user.room).emit('message',generateMessage(`${user.username} has joined!`))
@@ -41,6 +72,7 @@ io.on('connection', (socket) => {
         if(user.room){
             io.to(user.room).emit('message',generateMessage(user.username,message))
         }
+        incrementTextsCount()
         callback()
     })
 
@@ -49,6 +81,7 @@ io.on('connection', (socket) => {
         if (user.room){
             io.to(user.room).emit('locationMessage',generateLocationMessage(user.username,`https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
         }
+        incrementTextsCount()
         callback()
     })
 
