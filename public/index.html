@@ -32,7 +32,7 @@
                 <div id="create-room" style="display:none;">
                     <h2>Create Room</h2>
                     <form action="/create.html">
-                        <label>Display name</label>
+                        <label>User name</label>
                         <input type="text" name="username" placeholder="Display name" required>
                         <label>Room</label>
                         <input type="text" name="room" placeholder="Room ID" required>
@@ -47,7 +47,7 @@
                 <div id="join-room" style="display:none;">
                     <h2>Join Room</h2>
                     <form action="/chat.html">
-                        <label>Display name</label>
+                        <label>User name</label>
                         <input type="text" name="username" placeholder="Display name" required>
                         <label>Room</label>
                         <input type="text" name="room" placeholder="Room ID" required>
@@ -59,6 +59,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="security-widgets-container">
             <div class="security-widget">
                 <h2>Why Secure?</h2>
@@ -66,11 +67,21 @@
             </div>
             <div class="security-widget">
                 <h2>How It Works?</h2>
-                <p>To use our secure chat, follow these steps:</p>
+                <p>There are two ways to use our secure chat app:</p>
+                
+                <h3>Creating a Room:</h3>
                 <ol>
-                    <li>Decide upon a display name.</li>
                     <li>Think of a unique room ID.</li>
-                    <li>Enter the room name and share it with your friends to chat in the same room.</li>
+                    <li>Decide upon a display name.</li>
+                    <li>Join and share the details with your friends to chat in the same room.</li>
+                    <li>Password and room size are optional.</li>
+                </ol>
+            
+                <h3>Joining a Room:</h3>
+                <ol>
+                    <li>Enter the room ID.</li>
+                    <li>Provide your name.</li>
+                    <li>If a password exists, enter it to join the room.</li>
                 </ol>
             </div>
             <div class="security-widget">
@@ -80,7 +91,7 @@
                     <li>No message history</li>
                     <li>Share location</li>
                 </ol>
-            </div>           
+            </div>  
         </div>
     </div>
     <script src="js/functions.js"></script>
