@@ -1,0 +1,250 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+input {
+    font-size: 14px;
+}
+
+body {
+    line-height: 1.6;
+    color: #E0E0E0;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    background-color: #1A1A1D;
+}
+
+h1 {
+    margin-bottom: 16px;
+    color: #FFF;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #BBBBBB;
+}
+
+input {
+    border: 1px solid #444;
+    padding: 12px;
+    outline: none;
+    background-color: #34342c;
+    color: #FFF;
+    border-radius: 4px;
+}
+
+button {
+    cursor: pointer;
+    padding: 12px;
+    background: linear-gradient(90deg, #FF416C, #FF4B2B);
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: background .3s ease, transform .3s ease;
+    border-radius: 8px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #FF4B2B, #FF416C);
+    transform: scale(1.05);
+}
+
+button:disabled {
+    cursor: default;
+    background: #FF4B2B94;
+}
+
+
+.centered-form {
+    background: #2C2C34;
+    width: 100vw;
+    height: 100vh;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-form__box {
+    box-shadow: 0px 0px 17px 1px #1D1F26;
+    background: #3B3B45;
+    padding: 24px;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.centered-form button {
+    width: 100%;
+    background: linear-gradient(90deg, #FF416C, #FF4B2B);
+}
+
+.centered-form button:hover {
+    background: linear-gradient(90deg, #FF4B2B, #FF416C);
+}
+
+centered-form input {
+    margin-bottom: 16px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.chat {
+    display: flex;
+}
+
+.chat__sidebar {
+    height: 100vh;
+    color: white;
+    background: #1A1A1D;
+    width: 250px;
+    overflow-y: scroll;
+    padding: 16px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.chat__main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    background: #1A1A1D;
+}
+
+.chat__messages {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: scroll;
+    background: #2C2C34;
+    position: relative;
+}
+
+
+.message {
+    margin-bottom: 16px;   
+    padding: 16px;
+    border-radius: 8px;
+    background: #3B3B45;
+    color: #E0E0E0;
+    clear: both;
+}
+
+.message__name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 8px;
+    color: #FFD700;
+}
+
+.message__meta {
+    color: #777;
+    font-size: 14px;
+}
+
+.message a {
+    color: #FF4500;
+    text-decoration: none;
+}
+
+.message a:hover {
+    text-decoration: underline;
+}
+
+.message--sender {
+    background: #4B4B60;
+    float: right;
+    margin-left: 20%;
+    text-align: right;
+}
+
+.message--other {
+    float: left;
+    margin-right: 20%;
+    text-align: left;
+}
+
+.compose {
+    display: flex;
+    flex-shrink: 0;
+    margin-top: 16px;
+    padding: 24px;
+    background: #1A1A1D;
+    border-top: 1px solid #1A1A1D;
+}
+
+.compose form {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 16px;
+}
+
+.compose input {
+    border: 1px solid #444;
+    width: 100%;
+    padding: 12px;
+    margin: 0 16px 0 0;
+    flex-grow: 1;
+    background: #2C2C34;
+    color: #FFF;
+    border-radius: 4px;
+}
+
+.compose button {
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+
+.room-title {
+    font-weight: 400;
+    font-size: 22px;
+    background: #2C2C34;
+    padding: 24px;   
+    border-radius: 8px;
+    text-align: center;
+}
+
+.list-title {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 4px;
+    padding: 12px 24px 0 24px;
+}
+
+.users {
+    list-style-type: none;
+    font-weight: 300;
+    padding: 12px 24px 0 24px;
+}
+
+.users li {
+    padding: 8px;
+    background: #444;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.users li:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}

@@ -10,7 +10,7 @@ const messageTemplate = document.querySelector('#message-template').innerHTML;
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML;
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 
-const { username, room,password} = Qs.parse(location.search, { ignoreQueryPrefix: true });
+const { username, room,roomSize,password} = Qs.parse(location.search, { ignoreQueryPrefix: true });
 
 
 const autoscroll = () => {
@@ -91,9 +91,9 @@ $sendLocationButton.addEventListener('click', () => {
     });
 });
 
-socket.emit('join', {username, room,password }, (error) => {
-    if (error) {
+socket.emit('create', {username,room,roomSize,password}, (error) => {
+    if (error){
         alert(error);
-        location.href = '/';
+        location.href = '/'
     }
 });
