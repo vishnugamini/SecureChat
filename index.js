@@ -5,7 +5,7 @@ const socketio = require("socket.io")
 const mongoose = require('mongoose');
 require('dotenv').config();
 const {generateMessage,generateLocationMessage} = require('./src/utils/messages')
-const {addUser,removeUser,getUser,getUsersInRoom} = require('./src/utils/users')
+const {sizePassCur,incrCurMembers,decCurMembers,delRoom,addRoom,addUser,removeUser,getUser,getUsersInRoom,checkRoomAvailable} = require('./src/utils/users')
 
 const {getOrCreateStats,incrementRoomsCount,incrementTextsCount,incrementUsersCount} = require('./src/utils/schema')
 
@@ -45,15 +45,33 @@ app.get('/statistics', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log("New WebSocket connection")
+    socket.on('create',(options,callback) => {
+        let {username, room, roomSize, password } = options;
+        if(password === ''){
+            password = undefined
+        }
+        if (typeof(roomSize) === 'undefined' || roomSize === '') {
+            roomSize = undefined;
+        } else {
+            roomSize = Number(roomSize);
+        }
 
-    socket.on('join', (options,callback) => {
+        console.log(roomSize);
 
-        const {error,user} = addUser({id: socket.id,...options})
+        if (typeof(roomSize) !== 'undefined') {
+            if (roomSize <= 1) {
+                return callback("Room size must be more than 1");
+            }
+        }
+        if(checkRoomAvailable(room)){
+            return callback("Room already exists!")
+        }
+        const roooms = addRoom({room,roomSize,password,current:1})
+        console.log(roooms)
+        const {error,user} = addUser({id: socket.id,username,room})
         if (error){
            return callback(error)
         }
-
-        
         socket.join(user.room)
         socket.emit('message', generateMessage('Welcome!'))
         socket.broadcast.to(user.room).emit('message',generateMessage(`${user.username} has joined!`))
@@ -63,7 +81,45 @@ io.on('connection', (socket) => {
                 users:getUsersInRoom(user.room)
             })
         }
+        callback()
+    })
 
+    socket.on('join', ({username,room,password:userPassword},callback) => {
+        if(!checkRoomAvailable(room)){
+            return callback("Room does not exists")
+        }
+        const {roomSize,password,current} = sizePassCur(room)
+
+        console.log("real",password)
+        console.log("user",userPassword)
+
+        if(typeof(password) !== 'undefined' && password !== userPassword){
+            return callback("Incorrect password!")
+        }
+
+
+        if(typeof(roomSize) !== "undefined" && current >= roomSize){
+            return callback("Room is full")
+        }
+
+        if(typeof(roomSize) !== "undefined"){
+            const roomDeet = incrCurMembers(room)
+            console.log(roomDeet)
+        }
+        const {error,user} = addUser({id: socket.id,username,room})
+        if (error){
+            decCurMembers(room)
+           return callback(error)
+        }
+        socket.join(user.room)
+        socket.emit('message', generateMessage('Welcome!'))
+        socket.broadcast.to(user.room).emit('message',generateMessage(`${user.username} has joined!`))
+        if(user.room){
+            io.to(user.room).emit('roomData',{
+                room:user.room,
+                users:getUsersInRoom(user.room)
+            })
+        }
         callback()
     })
 
@@ -88,6 +144,8 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         const user = removeUser(socket.id)
         if (user && user.room){
+            decCurMembers(user.room)
+            delRoom(user.room)
             io.to(user.room).emit('message',generateMessage(`${user.username} has left!`))
             io.to(user.room).emit('roomData',{
                 room:user.room,

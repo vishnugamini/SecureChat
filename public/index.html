@@ -23,14 +23,39 @@
     <div class="container">
         <div class="centered-form">
             <div class="centered-form__box">
-                <h2>Join</h2>
-                <form action="/chat.html">
-                    <label>Display name</label>
-                    <input type="text" name="username" placeholder="Display name" required>
-                    <label>Room</label>
-                    <input type="text" name="room" placeholder="Room ID" required>
-                    <button>Join</button>
-                </form>
+                <div id="option-selection">
+                    <h2>Choose an Option</h2>
+                    <button onclick="showCreateRoom()">Create a Room</button>
+                    <button onclick="showJoinRoom()">Join a Room</button>
+                </div>
+                <div id="create-room" style="display:none;">
+                    <h2>Create Room</h2>
+                    <form action="/create.html">
+                        <label>Display name</label>
+                        <input type="text" name="username" placeholder="Display name" required>
+                        <label>Room</label>
+                        <input type="text" name="room" placeholder="Room ID" required>
+                        <label>Room Size (Optional)</label>
+                        <input type="number" name="roomSize" placeholder="Room Size">
+                        <label>Password (Optional)</label>
+                        <input type="password" name="password" placeholder="Password">
+                        <button id="create-button">Create</button>
+                    </form>
+                    <button onclick="goBack()">Back</button>
+                </div>
+                <div id="join-room" style="display:none;">
+                    <h2>Join Room</h2>
+                    <form action="/chat.html">
+                        <label>Display name</label>
+                        <input type="text" name="username" placeholder="Display name" required>
+                        <label>Room</label>
+                        <input type="text" name="room" placeholder="Room ID" required>
+                        <label>Password</label>
+                        <input type="text" name="password" placeholder="Password">
+                        <button id="join-button">Join</button>
+                    </form>
+                    <button onclick="goBack()">Back</button>
+                </div>
             </div>
         </div>
         <div class="security-widgets-container">
