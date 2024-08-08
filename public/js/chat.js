@@ -10,7 +10,10 @@ const messageTemplate = document.querySelector('#message-template').innerHTML;
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML;
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 
-const { username, room,password} = Qs.parse(location.search, { ignoreQueryPrefix: true });
+let { username, room,password} = Qs.parse(location.search, { ignoreQueryPrefix: true });
+username = username.trim().toLowerCase()
+room = room.trim().toLowerCase()
+
 
 
 const autoscroll = () => {
@@ -27,7 +30,9 @@ const autoscroll = () => {
 };
 
 socket.on('message', (message) => {
-    const messageClass = message.username === username ? 'message--sender' : 'message--other';
+    const messageClass = String(message.username) === String(username) ? 'message--sender' : 'message--other';
+    console.log(messageClass)
+    console.log(username,message.username)
     const html = Mustache.render(messageTemplate, {
         username: message.username,
         message: message.text,
