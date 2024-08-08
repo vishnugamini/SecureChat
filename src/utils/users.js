@@ -2,6 +2,11 @@ const {getOrCreateStats,incrementRoomsCount,incrementTextsCount,incrementUsersCo
 const users = []
 const rooms = []
 
+const details = () => {
+    console.log("USERS",users)
+    console.log('ROOMS',rooms)
+
+}
 const sizePassCur = (room) => {
     for(let i = 0; i < rooms.length; i++){
         const { room:userRoom,roomSize,password,current } = rooms[i];
@@ -129,6 +134,7 @@ const checkRoomAvailable = (room) => {
 
 
 module.exports = {
+    details,
     sizePassCur,
     incrCurMembers,
     decCurMembers,

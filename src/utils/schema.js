@@ -63,7 +63,7 @@ async function incrementTextsCount() {
     const stats = await getOrCreateStats();
     stats.texts += 1;
     await stats.save();
-    console.log('Texts count incremented:', stats.texts);
+    // console.log('Texts count incremented:', stats.texts);
 }
 
 module.exports = {

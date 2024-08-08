@@ -5,7 +5,7 @@ const socketio = require("socket.io")
 const mongoose = require('mongoose');
 require('dotenv').config();
 const {generateMessage,generateLocationMessage} = require('./src/utils/messages')
-const {sizePassCur,incrCurMembers,decCurMembers,delRoom,addRoom,addUser,removeUser,getUser,getUsersInRoom,checkRoomAvailable} = require('./src/utils/users')
+const {details,sizePassCur,incrCurMembers,decCurMembers,delRoom,addRoom,addUser,removeUser,getUser,getUsersInRoom,checkRoomAvailable} = require('./src/utils/users')
 
 const {getOrCreateStats,incrementRoomsCount,incrementTextsCount,incrementUsersCount} = require('./src/utils/schema')
 
@@ -56,8 +56,6 @@ io.on('connection', (socket) => {
             roomSize = Number(roomSize);
         }
 
-        console.log(roomSize);
-
         if (typeof(roomSize) !== 'undefined') {
             if (roomSize <= 1) {
                 return callback("Room size must be more than 1");
@@ -67,7 +65,6 @@ io.on('connection', (socket) => {
             return callback("Room already exists!")
         }
         const roooms = addRoom({room,roomSize,password,current:1})
-        console.log(roooms)
         const {error,user} = addUser({id: socket.id,username,room})
         if (error){
            return callback(error)
@@ -81,6 +78,7 @@ io.on('connection', (socket) => {
                 users:getUsersInRoom(user.room)
             })
         }
+        details()
         callback()
     })
 
@@ -89,9 +87,6 @@ io.on('connection', (socket) => {
             return callback("Room does not exists")
         }
         const {roomSize,password,current} = sizePassCur(room)
-
-        console.log("real",password)
-        console.log("user",userPassword)
 
         if(typeof(password) !== 'undefined' && password !== userPassword){
             return callback("Incorrect password!")
@@ -104,7 +99,6 @@ io.on('connection', (socket) => {
 
         if(typeof(roomSize) !== "undefined"){
             const roomDeet = incrCurMembers(room)
-            console.log(roomDeet)
         }
         const {error,user} = addUser({id: socket.id,username,room})
         if (error){
@@ -120,6 +114,7 @@ io.on('connection', (socket) => {
                 users:getUsersInRoom(user.room)
             })
         }
+        details()
         callback()
     })
 
@@ -152,6 +147,7 @@ io.on('connection', (socket) => {
                 users:getUsersInRoom(user.room)
             })
         }
+        details()
     })
 
 })

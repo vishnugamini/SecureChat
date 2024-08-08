@@ -12,5 +12,5 @@ async function fetchStats() {
   
   fetchStats();
   
-  setInterval(fetchStats, 10000);
+  setInterval(fetchStats, 5000);
   
