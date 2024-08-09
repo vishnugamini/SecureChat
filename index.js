@@ -5,7 +5,7 @@ const socketio = require("socket.io")
 const mongoose = require('mongoose');
 require('dotenv').config();
 const {generateMessage,generateLocationMessage} = require('./src/utils/messages')
-const {details,sizePassCur,incrCurMembers,decCurMembers,delRoom,addRoom,addUser,removeUser,getUser,getUsersInRoom,checkRoomAvailable} = require('./src/utils/users')
+const {details,sizePassCur,incrCurMembers,decCurMembers,deleteRoom,delRoom,addRoom,addUser,removeUser,getUser,getUsersInRoom,checkRoomAvailable} = require('./src/utils/users')
 
 const {getOrCreateStats,incrementRoomsCount,incrementTextsCount,incrementUsersCount} = require('./src/utils/schema')
 
@@ -86,7 +86,7 @@ io.on('connection', (socket) => {
         if(!checkRoomAvailable(room)){
             return callback("Room does not exists")
         }
-        const {roomSize,password,current} = sizePassCur(room)
+        const {roomSize,password,current} = sizePassCur(room) || {}
 
         if(typeof(password) !== 'undefined' && password !== userPassword){
             return callback("Incorrect password!")
@@ -139,8 +139,9 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         const user = removeUser(socket.id)
         if (user && user.room){
-            decCurMembers(user.room)
+            deleteRoom(user.room)
             delRoom(user.room)
+            decCurMembers(user.room)
             io.to(user.room).emit('message',generateMessage(`${user.username} has left!`))
             io.to(user.room).emit('roomData',{
                 room:user.room,

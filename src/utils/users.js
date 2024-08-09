@@ -35,19 +35,29 @@ const decCurMembers = (room) => {
     }
 }
 
+const deleteRoom = (room) => {
+    const index = rooms.findIndex(r => r.room === room);
+    if (index !== -1 && rooms[index].current === 0) {
+        rooms.splice(index, 1);
+    }
+}
+
+
 const delRoom = (room) => {
-    let bool = true;
-    for(let i = 0; i < users.length; i++){
-        const { id, username, room: userRoom } = rooms[i]; 
-        if (Number(userRoom) === Number(room)){
-            bool = false;
-            return;
+    let roomOccupied = false;
+
+    for (let i = 0; i < users.length; i++) {
+        const { room: userRoom } = users[i]; 
+        if (Number(userRoom) === Number(room)) {
+            roomOccupied = true;
+            break; 
         }
     }
-    if(bool){
-        const index = rooms.findIndex(r => r.room === room);
+
+    if (!roomOccupied) {
+        const index = rooms.findIndex(r => Number(r.room) === Number(room));
         if (index !== -1) {
-            rooms.splice(index, 1);
+            rooms.splice(index, 1); 
         }
     }
 }
@@ -138,6 +148,7 @@ module.exports = {
     sizePassCur,
     incrCurMembers,
     decCurMembers,
+    deleteRoom,
     delRoom,
     addRoom,
     addUser,
