@@ -23,10 +23,10 @@ Try out SecureChat here: [SecureChat Website](https://www.securechat.world/).
 ## Screenshots
 
 ### Landing Page
-![Landing Page](/img/img-1)
+![Landing Page](/img/img-1.png)
 
 ### Chat Page
-![Chat Page](/img/img-2)
+![Chat Page](/img/img-2.png)
 
 ## Contributing
 
