@@ -36,7 +36,8 @@
                 </div>
                 <div id="create-room" style="display:none;">
                     <h2>Create Room</h2>
-                    <form action="/create.html">
+                    <form action="/chat.html">
+                        <input type="hidden" name="mode" value="create">
                         <label for="username">User name</label>
                         <input type="text" id="username" name="username" placeholder="Display name" required>
                         <label for="room">Room</label>
@@ -52,6 +53,7 @@
                 <div id="join-room" style="display:none;">
                     <h2>Join Room</h2>
                     <form action="/chat.html">
+                        <input type="hidden" name="mode" value="join">
                         <label for="username">User name</label>
                         <input type="text" id="username" name="username" placeholder="Display name" required>
                         <label for="room">Room</label>

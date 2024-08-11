@@ -274,3 +274,79 @@ button:disabled {
     margin-bottom: 16px;
     padding-left: 16px; 
 }
+
+@media (max-width: 768px) {
+
+    html {
+        font-size: 14px; 
+    }
+
+    .title {
+        font-size: 2rem; 
+    }
+
+    .header {
+        padding: 8px 12px; 
+        flex-direction: column; 
+    }
+
+    .title-wrapper {
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        height: auto; 
+        padding: 8px; 
+    }
+
+    .centered-form__box, .security-widgets-container {
+        width: 100%; 
+        margin: 8px 0; 
+    }
+
+    .centered-form__box {
+        padding: 16px; 
+    }
+
+    .security-widget {
+        padding: 16px; 
+    }
+
+    input, button {
+        width: 100%; 
+    }
+
+    .menu-container {
+        margin-left: 0; 
+        margin-top: 8px; 
+    }
+
+    .dropdown-content {
+        right: auto; 
+        left: 0;
+        width: 100%; 
+    }
+
+    .security-widget h2 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+    }
+
+    .security-widget p,
+    .security-widget ol,
+    .security-widget li {
+        font-size: 13px;
+        padding-left: 12px;
+    }
+
+    .security-widget ol {
+        padding-left: 16px;
+    }
+
+    .menu-container:hover .dropdown-content {
+        transform: none;
+    }
+}

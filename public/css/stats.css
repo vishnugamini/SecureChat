@@ -38,6 +38,7 @@ input {
     color: #FFF;
     border-radius: 4px;
     transition: border-color .3s ease, background-color .3s ease;
+    width: 100%;
 }
 
 input:focus {
@@ -54,7 +55,9 @@ button {
     font-size: 16px;
     transition: background .3s ease, box-shadow .3s ease;
     border-radius: 8px;
+    width: auto;
 }
+
 button:hover {
     box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.3); 
 }
@@ -72,21 +75,21 @@ button:disabled {
     justify-content: center;
     align-items: center;
     position: relative;
-    border-bottom: 3.5px solid; /* Thicker line */
-    border-image: linear-gradient(to right, #FF416C, #FF4B2B); /* Gradient effect */
+    border-bottom: 3.5px solid;
+    border-image: linear-gradient(to right, #FF416C, #FF4B2B);
     border-image-slice: 1;
 }
 
-
 .header h1 {
     margin-bottom: 0;
+    font-size: 1.8rem;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .back-button {
     position: absolute;
     left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
     background: linear-gradient(90deg, #FF416C, #FF4B2B); 
     border: none;
     padding: 10px 20px;
@@ -95,6 +98,8 @@ button:disabled {
     cursor: pointer;
     border-radius: 5px;
     transition: background .3s ease, transform .3s ease, box-shadow .3s ease;
+    width: auto;
+    margin-right: 10px;
 }
 
 .back-button:hover {
@@ -105,26 +110,32 @@ button:disabled {
 .container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: center;
     height: calc(100vh - 80px); 
     padding: 16px;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .security-widgets-container {
     display: flex;
     flex-direction: column; 
-    gap: 24px; 
-    width: 35%; 
+    gap: 32px; 
+    width: 100%; 
+    max-width: 500px;
+    margin: 0 auto; 
 }
 
 .security-widget {
     background: #3B3B45;
-    padding: 24px;
+    padding: 32px;
     border-radius: 8px;
     color: #E0E0E0;
     box-shadow: 0px 0px 17px 1px #1D1F26;
     transition: box-shadow .3s ease, transform .3s ease;
     text-align: center;
+    width: 100%;
+    max-width: 450px;
 }
 
 .security-widget:hover {
@@ -134,10 +145,61 @@ button:disabled {
 
 .security-widget h2 {
     margin-bottom: 16px;
+    font-size: 1.8rem;
 }
 
 .security-widget p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #FFF;
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .back-button {
+        position: relative;
+        left: 0;
+        margin: 0 auto 8px auto;
+        display: block;
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        gap: 48px;
+    }
+
+    .security-widgets-container {
+        width: 80%;
+    }
+
+    .security-widget p {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header h1 {
+        font-size: 2.4rem;
+    }
+
+    .security-widgets-container {
+        width: 70%;
+    }
+
+    .security-widget p {
+        font-size: 2rem;
+    }
 }
