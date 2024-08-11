@@ -240,37 +240,70 @@ button#send-location {
 }
 
 
-@media (min-width: 768px) {
-    .chat {
-        flex-direction: row;
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+
+    html {
+        font-size: 12px; 
     }
 
-    .chat__sidebar {
-        width: 250px;
-        height: 100vh;
-        flex-shrink: 0;
-        box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    .title {
+        font-size: 1.75rem; 
     }
 
-    .compose form {
-        flex-direction: row;
+    .header {
+        padding: 6px 10px; 
     }
 
-    .compose input {
-        margin-bottom: 0;
-        margin-right: 16px;
-        width: 80%;
+    .title-wrapper {
+        margin-bottom: 8px; 
     }
 
-    .compose button {
-        width: auto;
+    .container {
+        padding: 6px; 
     }
 
-    .message--sender {
-        margin-left: 40%;
+    .centered-form__box, .security-widgets-container {
+        margin: 6px 0; 
     }
 
-    .message--other {
-        margin-right: 40%;
+    .centered-form__box,
+    .security-widget {
+        padding: 12px; 
+    }
+
+    input, button {
+        font-size: 14px; 
+    }
+
+    .menu-container {
+        margin-top: 6px; 
+    }
+
+    .dropdown-content {
+        font-size: 13px; 
+        padding: 8px 0;
+    }
+
+    .security-widget h2 {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+    }
+
+    .security-widget p,
+    .security-widget ol,
+    .security-widget li {
+        font-size: 12px;
+        padding-left: 8px;
+    }
+
+    .security-widget ol {
+        padding-left: 12px;
+    }
+
+    .menu-container:hover .dropdown-content {
+        transform: none; 
     }
 }
