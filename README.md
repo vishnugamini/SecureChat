@@ -5,7 +5,7 @@ SecureChat is an ephemeral one-time chat application that ensures complete priva
 ## Features
 
 - **Ephemeral Chats:** Messages vanish once the chat is closed, leaving no digital footprint.
-- **Unlimited Rooms:** Create as many rooms as needed. Room limits can be set or left unrestricted.
+- **No Limit on Users:** No limit on users in a single room unless explicitly stated.
 - **Password Protection:** Rooms can be secured with passwords.
 - **No Data Storage:** Messages are not stored anywhere.
 - **Anonymous Chat:** Engage in private conversations without revealing your identity.
@@ -20,6 +20,14 @@ SecureChat is an ephemeral one-time chat application that ensures complete priva
 
 Try out SecureChat here: [SecureChat Website](https://www.securechat.world/).
 
+## Screenshots
+
+### Landing Page
+![Landing Page](img/img-1)
+
+### Chat Page
+![Chat Page](img/img-2)
+
 ## Contributing
 
-I welcome contributions! If you have suggestions or improvements, please send a pull request to our [GitHub repository](https://github.com/vishnugamini/SecureChat).
+I welcome contributions! If you have suggestions or improvements, please send a pull request to my [GitHub repository](https://github.com/vishnugamini/SecureChat).
