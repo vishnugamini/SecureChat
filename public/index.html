@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat</title>
     <link rel="icon" href="/img/noeye.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap">
@@ -8,19 +10,22 @@
 </head>
 <body>
     <div class="header">
-        <h1>Secure Chat</h1>
+        <div class="title-wrapper">
+            <h1 class="title">Secure Chat</h1>
+        </div>
         <div class="menu-container">
-            <div class="menu" onclick="toggleMenu()">
+            <div class="menu" aria-label="Toggle menu" tabindex="0" onclick="toggleMenu()" onkeypress="toggleMenu()">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
             </div>
             <div class="dropdown-content" id="dropdownMenu">
-                <a href="/statistics">Statistics</a>
-                <a href="https://github.com/vishnugamini/SecureChat" target="_blank">Link to Repo</a>
+                <a href="/statistics" aria-label="Statistics" tabindex="0">Statistics</a>
+                <a href="https://github.com/vishnugamini/SecureChat" target="_blank" aria-label="Link to Repo" tabindex="0">Link to Repo</a>
             </div>
         </div>
     </div>
+    
     <div class="container">
         <div class="centered-form">
             <div class="centered-form__box">
@@ -32,30 +37,30 @@
                 <div id="create-room" style="display:none;">
                     <h2>Create Room</h2>
                     <form action="/create.html">
-                        <label>User name</label>
-                        <input type="text" name="username" placeholder="Display name" required>
-                        <label>Room</label>
-                        <input type="text" name="room" placeholder="Room ID" required>
-                        <label>Room Size (Optional)</label>
-                        <input type="number" name="roomSize" placeholder="Room Size">
-                        <label>Password (Optional)</label>
-                        <input type="password" name="password" placeholder="Password">
-                        <button id="create-button">Create</button>
+                        <label for="username">User name</label>
+                        <input type="text" id="username" name="username" placeholder="Display name" required>
+                        <label for="room">Room</label>
+                        <input type="text" id="room" name="room" placeholder="Room ID" required>
+                        <label for="roomSize">Room Size (Optional)</label>
+                        <input type="number" id="roomSize" name="roomSize" placeholder="Room Size">
+                        <label for="password">Password (Optional)</label>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <button id="create-button" aria-label="Create Room">Create</button>
                     </form>
                     <button onclick="goBack()">Back</button>
                 </div>
                 <div id="join-room" style="display:none;">
                     <h2>Join Room</h2>
                     <form action="/chat.html">
-                        <label>User name</label>
-                        <input type="text" name="username" placeholder="Display name" required>
-                        <label>Room</label>
-                        <input type="text" name="room" placeholder="Room ID" required>
-                        <label>Password</label>
-                        <input type="text" name="password" placeholder="Password">
-                        <button id="join-button">Join</button>
+                        <label for="username">User name</label>
+                        <input type="text" id="username" name="username" placeholder="Display name" required>
+                        <label for="room">Room</label>
+                        <input type="text" id="room" name="room" placeholder="Room ID" required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <button id="join-button" aria-label="Join Room">Join</button>
                     </form>
-                    <button onclick="goBack()">Back</button>
+                    <button onclick="window.location.href='/'">Back</button>
                 </div>
             </div>
         </div>
@@ -68,7 +73,6 @@
             <div class="security-widget">
                 <h2>How It Works?</h2>
                 <p>There are two ways to use our secure chat app:</p>
-                
                 <h3>Creating a Room:</h3>
                 <ol>
                     <li>Think of a unique room ID.</li>
@@ -76,7 +80,6 @@
                     <li>Join and share the details with your friends to chat in the same room.</li>
                     <li>Password and room size are optional.</li>
                 </ol>
-            
                 <h3>Joining a Room:</h3>
                 <ol>
                     <li>Enter the room ID.</li>

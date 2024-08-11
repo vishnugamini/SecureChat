@@ -1,3 +1,6 @@
+
+
+
 function showCreateRoom() {
     document.getElementById('option-selection').style.display = 'none';
     document.getElementById('create-room').style.display = 'block';
@@ -33,3 +36,5 @@ window.onclick = function(event) {
         }
     }
 }
+
+

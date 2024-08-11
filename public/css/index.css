@@ -69,22 +69,60 @@ button:disabled {
 
 .header {
     background: #2C2C34;
-    text-align: center;
-    padding: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 8px 16px;
     position: relative;
+    border-bottom: 3.5px solid;
+    border-image: linear-gradient(to right, #FF416C, #FF4B2B);
+    border-image-slice: 1;
+    height: auto;
 }
 
-.header h1 {
-    flex: 1;
+
+.title-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
     margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    text-align: center;
+}
+
+.title:hover {
+    animation: disintegrate 1s forwards;
+}
+
+@keyframes disintegrate {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-10px) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(1.2);
+        filter: blur(10px);
+    }
 }
 
 .menu-container {
-    position: absolute;
-    right: 16px;
+    margin-left: auto;
+    position: relative;
 }
 
 .menu {
@@ -92,12 +130,30 @@ button:disabled {
     display: inline-block;
     padding: 10px;
 }
+
 .menu div {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px 0;
-    transition: 0.4s;
+    width: 30px;
+    height: 4px;
+    background-color: #FF416C;
+    margin: 6px 0;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+    border-radius: 2px;
+}
+
+.menu-container:hover .menu div {
+    background-color: #FF4B2B;
+}
+
+.menu-container:hover .bar1 {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-container:hover .bar2 {
+    opacity: 0;
+}
+
+.menu-container:hover .bar3 {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 .dropdown-content {
@@ -109,7 +165,17 @@ button:disabled {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 8px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.menu-container:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .dropdown-content a {
     color: white;
@@ -124,6 +190,7 @@ button:disabled {
     background-color: #FF4B2B;
     transform: scale(1.05);
 }
+
 
 .container {
     display: flex;

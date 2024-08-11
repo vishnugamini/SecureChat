@@ -68,8 +68,15 @@ button:disabled {
     background: #2C2C34;
     text-align: center;
     padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    border-bottom: 3.5px solid; /* Thicker line */
+    border-image: linear-gradient(to right, #FF416C, #FF4B2B); /* Gradient effect */
+    border-image-slice: 1;
 }
+
 
 .header h1 {
     margin-bottom: 0;
