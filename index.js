@@ -70,7 +70,7 @@ io.on('connection', (socket) => {
            return callback(error)
         }
         socket.join(user.room)
-        socket.emit('message', generateMessage('Welcome!'))
+        socket.emit('message', generateMessage('Connection Established!'))
         socket.broadcast.to(user.room).emit('message',generateMessage(`${user.username} has joined!`))
         if(user && user.room){
             io.to(user.room).emit('roomData',{
@@ -106,7 +106,7 @@ io.on('connection', (socket) => {
            return callback(error)
         }
         socket.join(user.room)
-        socket.emit('message', generateMessage('Welcome!'))
+        socket.emit('message', generateMessage('Connection Established!'))
         socket.broadcast.to(user.room).emit('message',generateMessage(`${user.username} has joined!`))
         if(user && user.room){
             io.to(user.room).emit('roomData',{
