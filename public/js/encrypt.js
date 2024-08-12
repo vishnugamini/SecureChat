@@ -1,6 +1,10 @@
 import CryptoJS from 'https://cdn.skypack.dev/crypto-js';
 
-const key = 'sdfsdfsasdasdadasdasdaadsdazsd42342342342adfg'; 
+function generateRandomKey(length = 16) {
+    const randomBytes = CryptoJS.lib.WordArray.random(length);
+    return randomBytes.toString(CryptoJS.enc.Hex);
+}
+const key = generateRandomKey()
 
 export function encrypt(message, key) {
     try {
