@@ -1,6 +1,6 @@
 import CryptoJS from 'https://cdn.skypack.dev/crypto-js';
 
-const key = 'sdfsdfsasdasdadasdasdaadsdazsd42342342342adfg'; 
+const key = ''; 
 
 export function encrypt(message, key) {
     try {
