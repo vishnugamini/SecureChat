@@ -29,6 +29,7 @@ const publicDirectoryPath = path.join(__dirname,'/public')
 
 app.use(express.static(publicDirectoryPath))
 
+
 app.get('/stats', async (req, res) => {
     try {
       const stats = await Stats.findOne();
@@ -153,6 +154,14 @@ io.on('connection', (socket) => {
 
 })
 
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(publicDirectoryPath, '404.html'));
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 server.listen(port, () => {
     console.log(`server is up on port ${port}`)
