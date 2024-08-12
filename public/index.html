@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Chat</title>
+    <meta name="description" content="Secure Chat - A privacy-focused chat application offering end-to-end encryption, anonymous chatting, and no message history. Create or join secure rooms with ease.">
+    <meta name="keywords" content="Secure Chat, Encrypted Chat, Anonymous Chat, No Message History, Privacy Chat, Secure Messaging">
+    <meta name="author" content="Vishnu Gamini">
+    <title>Secure Chat | Privacy-focused Chat Application</title>
     <link rel="icon" href="/img/noeye.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap">
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <div class="title-wrapper">
-            <h1 class="title">Secure Chat  <a href="/img/noeye.png">
-                <img src="/img/noeye.png" alt="No Eye Icon" style="vertical-align: middle; width: 60px; height: auto; margin-bottom: 9px;">
-            </a></h1>
+            <h1 class="title">Secure Chat 
+                <a href="/" aria-label="Secure Chat Home">
+                    <img src="/img/noeye.png" alt="No Eye Icon" style="vertical-align: middle; width: 60px; height: auto; margin-bottom: 9px;">
+                </a>
+            </h1>
         </div>
-        <div class="menu-container">
+        <nav class="menu-container">
             <div class="menu" aria-label="Toggle menu" tabindex="0" onclick="toggleMenu()" onkeypress="toggleMenu()">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
@@ -25,11 +30,11 @@
                 <a href="/statistics" aria-label="Statistics" tabindex="0">Statistics</a>
                 <a href="https://github.com/vishnugamini/SecureChat" target="_blank" aria-label="Link to Repo" tabindex="0">Link to Repo</a>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
     
-    <div class="container">
-        <div class="centered-form">
+    <main class="container">
+        <section class="centered-form">
             <div class="centered-form__box">
                 <div id="option-selection">
                     <h2>Choose an Option</h2>
@@ -64,17 +69,17 @@
                         <input type="password" id="password" name="password" placeholder="Password">
                         <button id="join-button" aria-label="Join Room">Join</button>
                     </form>
-                    <button onclick="window.location.href='/'">Back</button>
+                    <button onclick="goBack()">Back</button>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <div class="security-widgets-container">
-            <div class="security-widget">
+        <section class="security-widgets-container">
+            <article class="security-widget">
                 <h2>Why Secure?</h2>
                 <p>Our secure chat ensures your messages are never stored. It's a one-time chat where, once closed, the conversation does not exist anymore. Your privacy is important.</p>
-            </div>
-            <div class="security-widget">
+            </article>
+            <article class="security-widget">
                 <h2>How It Works?</h2>
                 <p>There are two ways to use our secure chat app:</p>
                 <h3>Creating a Room:</h3>
@@ -90,8 +95,8 @@
                     <li>Provide your name.</li>
                     <li>If a password exists, enter it to join the room.</li>
                 </ol>
-            </div>
-            <div class="security-widget">
+            </article>
+            <article class="security-widget">
                 <h2>Key Features</h2>
                 <ol>
                     <li>End-to-End encrypted</li>
@@ -99,9 +104,14 @@
                     <li>No message history</li>
                     <li>Share location</li>
                 </ol>
-            </div>  
-        </div>
-    </div>
+            </article>  
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Secure Chat. All rights reserved.</p>
+    </footer>
+    
     <script src="js/functions.js"></script>
 </body>
 </html>
