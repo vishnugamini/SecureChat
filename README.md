@@ -10,7 +10,7 @@ This is achieved through the following:
 
 - **End-to-End Encryption:** All messages sent to the server are encrypted using a public key/private key architecture.
 - **Message Deletion:** Messages are removed from the server as soon as they are read by a client.
-- **Privacy First:** No personally identifying information is captured, either during account setup or with device registration.
+- **Privacy First:** No personally identifying information is captured during the usage of application.
 
 ## Features
 
