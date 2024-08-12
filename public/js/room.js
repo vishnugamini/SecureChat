@@ -1,5 +1,6 @@
-const socket = io();
+import { encrypt, decrypt } from './encrypt.js';
 
+const socket = io();
 const $messageForm = document.querySelector('#message-form');
 const $messageFormInput = $messageForm.querySelector('input');
 const $messageFormButton = $messageForm.querySelector('button');
@@ -11,6 +12,7 @@ const locationMessageTemplate = document.querySelector('#location-message-templa
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 
 const { username, room, roomSize, password, mode } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+
 
 const autoscroll = () => {
     const $newMessage = $messages.lastElementChild;
@@ -26,9 +28,10 @@ const autoscroll = () => {
 
 socket.on('message', (message) => {
     const messageClass = message.username === username ? 'message--sender' : 'message--other';
+    const decryptedMessage = decrypt(message.text);
     const html = Mustache.render(messageTemplate, {
         username: message.username,
-        message: message.text,
+        message: decryptedMessage,
         createdAt: moment(message.createdAt).format('h:mm a'),
         messageClass: messageClass
     });
@@ -61,7 +64,7 @@ $messageForm.addEventListener('submit', (e) => {
     $messageFormButton.setAttribute('disabled', 'disabled');
 
     const message = e.target.elements.message.value;
-    socket.emit("sendMessage", message, (error) => {
+    socket.emit("sendMessage",encrypt(message), (error) => {
         $messageFormButton.removeAttribute('disabled');
         $messageFormInput.value = '';
         $messageFormInput.focus();
