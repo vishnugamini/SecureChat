@@ -4,7 +4,7 @@ SecureChat is an ephemeral one-time chat application that ensures complete priva
 
 ## Secure Design
 
-SecureChat is a small-scale demonstration of a secure chat system using a public key architecture that prevents eavesdropping. It is designed to minimize the opportunity for third-party agencies (such as hackers or governmental agencies) from being able to obtain chat history or chat messages from a compromised server.
+SecureChat is a small-scale demonstration of a secure chat system designed to prevent eavesdropping and minimize the opportunity for third-party agencies (such as hackers or governmental agencies) to obtain chat history or messages from a compromised server.
 
 This is achieved through the following:
 
