@@ -85,28 +85,28 @@ button:disabled {
 
 .chat {
     display: flex;
-    flex-direction: row; /* Ensure the layout is horizontal */
-    height: 100vh; /* Full viewport height */
-    width: 100vw;  /* Full viewport width */
+    flex-direction: row; 
+    height: 100vh; 
+    width: 100vw;  
 }
 
 .chat__sidebar {
-    width: 250px; /* Fixed width for the sidebar */
+    width: 250px; 
     background: #1A1A1D;
     color: white;
     padding: 16px;
     overflow-y: auto;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    flex-shrink: 0; /* Prevents the sidebar from shrinking */
+    flex-shrink: 0; 
 }
 
 .chat__main {
-    flex-grow: 1; /* Take up remaining space */
+    flex-grow: 1; 
     background: #1A1A1D;
     display: flex;
     flex-direction: column;
     max-height: 100vh;
-    overflow-y: auto; /* Allows scrolling within the main content */
+    overflow-y: auto; 
 }
 
 
@@ -259,6 +259,18 @@ button#send-location {
         flex-grow: 1;
         max-height: calc(100vh - 250px); 
     }
+    .message--sender {
+        background: #4B4B60;
+        float: right;
+        margin-left: 20%;
+        text-align: right;
+    }
+    
+    .message--other {
+        float: left;
+        margin-right: 20%;
+        text-align: left;
+    }
 }
 
 @media (max-width: 480px) {
@@ -337,5 +349,17 @@ button#send-location {
 
     .menu-container:hover .dropdown-content {
         transform: none; 
+    }
+    .message--sender {
+        background: #4B4B60;
+        float: right;
+        margin-left: 20%;
+        text-align: right;
+    }
+    
+    .message--other {
+        float: left;
+        margin-right: 20%;
+        text-align: left;
     }
 }

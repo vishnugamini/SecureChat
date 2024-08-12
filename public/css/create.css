@@ -258,6 +258,18 @@ button#send-location {
         flex-grow: 1;
         max-height: calc(100vh - 250px);
     }
+    .message--sender {
+        background: #4B4B60;
+        float: right;
+        margin-left: 20%;
+        text-align: right;
+    }
+    
+    .message--other {
+        float: left;
+        margin-right: 20%;
+        text-align: left;
+    }
     
 }
 
@@ -337,5 +349,17 @@ button#send-location {
 
     .menu-container:hover .dropdown-content {
         transform: none; 
+    }
+    .message--sender {
+        background: #4B4B60;
+        float: right;
+        margin-left: 20%;
+        text-align: right;
+    }
+    
+    .message--other {
+        float: left;
+        margin-right: 20%;
+        text-align: left;
     }
 }
