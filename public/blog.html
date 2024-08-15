@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Ephemeral One Time Chat - Blog</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <header class="header">
+        <button class="back-button" onclick="window.location.href='/'">Back</button>
+        <div class="title-wrapper">
+            <h1 class="title">Secure Chat Blog</h1>
+        </div>
+        <div class="menu-container">
+            <div class="dropdown-content">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+
+    </header>
+    <main id="blog-container" class="blog-grid">
+    </main>
+    <div id="focused-content" class="focused-content">
+        <div class="focused-content-box">
+            <h2 id="focused-title"></h2>
+            <p id="focused-text"></p>
+            <button id="close-focused-content" class="close-focused-content">Close</button>
+        </div>
+    </div>
+
+
+    <script src="js/blog.js"></script>
+    <script src="js/content.js"></script>
+</body>
+</html>

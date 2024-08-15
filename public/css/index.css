@@ -1,3 +1,4 @@
+/* General Reset and Base Styling */
 * {
     margin: 0;
     padding: 0;
@@ -67,6 +68,7 @@ button:disabled {
     background: #FF4B2B94;
 }
 
+/* Header Styling */
 .header {
     background: #2C2C34;
     display: flex;
@@ -79,7 +81,6 @@ button:disabled {
     border-image-slice: 1;
     height: auto;
 }
-
 
 .title-wrapper {
     flex-grow: 1;
@@ -120,6 +121,7 @@ button:disabled {
     }
 }
 
+/* Menu Styling */
 .menu-container {
     margin-left: auto;
     position: relative;
@@ -176,7 +178,6 @@ button:disabled {
     transform: translateY(0);
 }
 
-
 .dropdown-content a {
     color: white;
     padding: 12px 16px;
@@ -191,7 +192,72 @@ button:disabled {
     transform: scale(1.05);
 }
 
+/* Blog Grid Layout */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 24px;
+    padding: 24px;
+}
 
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
+
+/* Blog Post Styling */
+.post {
+    background: #3B3B45;
+    padding: 24px;
+    border-radius: 8px;
+    color: #E0E0E0;
+    box-shadow: 0px 0px 17px 1px #1D1F26;
+    transition: box-shadow .3s ease, transform .3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from space-between to flex-start */
+    align-items: flex-start; /* Ensure items align at the start */
+}
+
+
+.post p {
+    font-size: 14px;
+    color: #BBBBBB;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 16px;
+}
+
+.elaborated-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease; /* Use max-height for smoother transitions */
+    margin-bottom: 0;
+}
+
+.elaborated-content.open {
+    max-height: 500px; /* Set a maximum height large enough to fit the expanded content */
+    margin-bottom: 16px;
+}
+
+.read-more {
+    font-size: 14px;
+    color: #FF4B2B;
+    text-decoration: none;
+    align-self: flex-start;
+    z-index: 2;
+    transition: color .3s ease;
+    cursor: pointer;
+}
+
+.read-more:hover {
+    color: #FF416C;
+}
+
+/* Form Container Styling */
 .container {
     display: flex;
     justify-content: center;
@@ -234,6 +300,7 @@ button:disabled {
     border-radius: 4px;
 }
 
+/* Security Widget Container */
 .security-widgets-container {
     display: flex;
     flex-direction: column; 
@@ -274,7 +341,9 @@ button:disabled {
     margin-bottom: 16px;
     padding-left: 16px; 
 }
+/* Modal Background */
 
+/* Responsive Adjustments */
 @media (max-width: 768px) {
 
     html {

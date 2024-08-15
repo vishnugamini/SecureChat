@@ -43,6 +43,10 @@ app.get('/statistics', (req, res) => {
     res.sendFile(path.join(publicDirectoryPath, 'stats.html'));
 });
 
+app.get('/blogs', (req, res) => {
+    res.sendFile(path.join(publicDirectoryPath, 'blog.html'));
+});
+
 
 io.on('connection', (socket) => {
     console.log("New WebSocket connection")
