@@ -40,5 +40,5 @@ Try out SecureChat here: [SecureChat Website](https://www.securechat.world/).
 
 ## Contributing
 
-I welcome contributions! If you have suggestions or improvements, please send a pull request to my [GitHub repository](https://github.com/vishnugamini/SecureChat).
+I welcome contributions! If you have suggestions or improvements, please send a pull request.
 
