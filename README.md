@@ -2,6 +2,8 @@
 
 SecureChat is an ephemeral one-time chat application that ensures complete privacy by making messages disappear once the chat is closed. The application uses sockets to create secure rooms for real-time communication.
 
+Try out SecureChat here: [SecureChat Website](https://www.securechat.world/).
+
 ## Secure Design
 
 SecureChat is a small-scale demonstration of a secure chat system that emphasizes a one-time chat functionality, ensuring that no chat messages are saved or stored anywhere. It is also designed to prevent eavesdropping and minimize the opportunity for third-party agencies (such as hackers or governmental agencies) to obtain chat history or messages from a compromised server.
@@ -25,10 +27,6 @@ This is achieved through the following:
 
 - **Create a Room:** Choose a unique room ID and a display name. Optionally set a password and room size. Share the details with others to start chatting.
 - **Join a Room:** Enter the room ID and your name. Provide the password if the room is protected.
-
-## Getting Started
-
-Try out SecureChat here: [SecureChat Website](https://www.securechat.world/).
 
 ## Screenshots
 
