@@ -11,7 +11,7 @@ SecureChat is a small-scale demonstration of a secure chat system that emphasize
 This is achieved through the following:
 
 - **End-to-End Encryption:** All messages sent through the chat are encrypted using symmetric AES encryption, ensuring that only the participants in the chat can read the messages. The encryption key is securely exchanged between participants, so even the server cannot decrypt the messages.
-- **Message Deletion:** Messages are removed from the server as soon as they are read by a client.
+- **Messages:** Messages are never stored and upon closing the chat window, the chat never existed in reality.
 - **Privacy First:** No personally identifying information is captured during the usage of application.
 
 ## Features
