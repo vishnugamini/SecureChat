@@ -119,12 +119,21 @@ button:disabled {
 }
 
 .message {
-    margin-bottom: 16px;   
+    margin-bottom: 16px;
     padding: 16px;
     border-radius: 8px;
     background: #3B3B45;
     color: #E0E0E0;
     clear: both;
+    display: inline-block;
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+.message p {
+    margin: 4px 0;
+    white-space: pre-wrap;
 }
 
 .message__name {
@@ -151,13 +160,13 @@ button:disabled {
 .message--sender {
     background: #4B4B60;
     float: right;
-    margin-left: 20%;
+    margin-left: 10%;
     text-align: right;
 }
 
 .message--other {
     float: left;
-    margin-right: 20%;
+    margin-right: 10%;
     text-align: left;
 }
 
@@ -181,14 +190,16 @@ button:disabled {
 }
 
 .compose input {
-    margin-right: 8px; 
-    flex-grow: 1; 
+    margin-right: 8px;
+    flex-grow: 1;
+    padding: 12px;
 }
 
 .compose button {
     font-size: 14px;
     border-radius: 4px;
-    width: auto; 
+    width: auto;
+    padding: 12px 20px;
 }
 
 button#send-location {
