@@ -59,12 +59,24 @@ socket.on('roomData', ({ room, users }) => {
     document.querySelector("#sidebar").innerHTML = html;
 });
 
+$messageFormInput.addEventListener('input', () => {
+    if ($messageFormInput.value.trim().length > 0) {
+        $messageFormButton.removeAttribute('disabled');
+    } else {
+        $messageFormButton.setAttribute('disabled', 'disabled');
+    }
+});
+
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault();
     $messageFormButton.setAttribute('disabled', 'disabled');
 
-    const message = e.target.elements.message.value;
-    socket.emit("sendMessage",encrypt(message), (error) => {
+    const message = e.target.elements.message.value.trim();
+    if (!message) {
+        $messageFormButton.removeAttribute('disabled');
+        return;
+    }
+    socket.emit("sendMessage", encrypt(message), (error) => {
         $messageFormButton.removeAttribute('disabled');
         $messageFormInput.value = '';
         $messageFormInput.focus();
