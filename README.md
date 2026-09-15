@@ -36,7 +36,45 @@ This is achieved through the following:
 ### Chat Page
 ![Chat Page](/img/img-2.png)
 
+## Continuous integration
+
+The [CI workflow](.github/workflows/ci.yml) runs on pull requests targeting
+`main`, pushes to `main`, and manual runs from the Actions tab.
+
+- Installs the locked dependencies with `npm ci` on Node.js 22 and 24.
+- Checks JavaScript syntax and runs message unit tests.
+- Starts an isolated MongoDB 7 service and tests HTTP routes, WebSocket room
+  creation, password and capacity checks, message/location delivery, and disconnects.
+
+The workflow does not publish images or deploy the app and needs no repository
+secrets. Actions are pinned to commit hashes; Dependabot checks Actions updates
+weekly. There is no frontend compilation step in this project.
+
+### Run the checks locally
+
+Use Node.js 24 (`nvm use` if you use nvm):
+
+```sh
+npm ci
+npm run check
+npm test
+```
+
+Integration tests start and stop the app automatically. Point them at a disposable
+database, because the chat tests write statistics:
+
+```sh
+docker run --detach --rm --name securechat-test-mongo -p 127.0.0.1:27017:27017 mongo:7
+MONGODB_URI=mongodb://127.0.0.1:27017/securechat_test npm run test:integration
+docker stop securechat-test-mongo
+```
+
+Docker is used only to provide a disposable MongoDB test database; the app does
+not need a Dockerfile.
+
+Once this workflow is pushed, you can make `Test (Node 22)` and `Test (Node 24)`
+required checks in the repository's branch protection settings.
+
 ## Contributing
 
 I welcome contributions! If you have suggestions or improvements, please send a pull request.
-
